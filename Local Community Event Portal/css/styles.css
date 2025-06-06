@@ -1,0 +1,331 @@
+/* ================================
+   General Reset and Box Sizing
+=================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+   1. Header Styles
+   - Exercise 1, 2: Comments & structure
+=================================== */
+header, #mainHeader {
+  text-align: center;
+  padding: 1rem 0;
+  background: linear-gradient(90deg, #0099ff 60%, #60c3ff 100%);
+  color: white;
+  font-size: 2rem;
+}
+
+/* ================================
+   Navigation Bar Styles
+   - Exercise 3, 6: Selectors, Links, List Styling
+=================================== */
+nav {
+  background: #0099ff;
+  padding: 0.5rem 0;
+}
+ul.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+ul.nav-list li a:link,
+ul.nav-list li a:visited {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+ul.nav-list li a:hover,
+ul.nav-list li a:active {
+  background: #e0f7fa;
+  color: #0099ff;
+}
+ul.nav-list li {
+  margin-bottom: 0;
+}
+
+/* ================================
+   2. Selectors Playground
+=================================== */
+h2 {
+  color: #009688;
+}
+.eventCard {
+  box-shadow: 0 0 10px #aaa;
+  padding: 1rem;
+  margin: 1.2rem 0;
+  border-radius: 10px;
+  background: #f4fdff;
+  border: 1px solid #74b9ff;
+}
+.event-card {
+  margin-bottom: 2rem;
+}
+h3, p {
+  margin-bottom: 12px;
+}
+
+/* ================================
+   3. Highlight/ID/Class Examples
+=================================== */
+#welcomeBanner {
+  background: linear-gradient(90deg, #2196f3 60%, #90caf9 100%);
+  color: #fff;
+  padding: 1rem 0.5rem;
+  margin: 1rem auto;
+  width: 95%;
+  border-radius: 10px;
+  box-shadow: 0 2px 18px rgba(33,150,243,0.08);
+  font-weight: 500;
+  text-align: center;
+}
+.highlight, .badge.bg-warning {
+  background: #ffe082 !important;
+  color: #c62828 !important;
+  padding: 0.1rem 0.6rem;
+  border-radius: 2px;
+  font-weight: bold;
+}
+.special-offer {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+/* ================================
+   4. Color & Background Styling
+=================================== */
+body {
+  background: #f0f8ff url('../images/city-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Roboto', Arial, sans-serif;
+  padding-bottom: 80px; /* To prevent overlap with fixed footer */
+}
+.section-header {
+  background: linear-gradient(90deg, #0099ff, #60c3ff);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ================================
+   5. Typography: Fonts and Text
+=================================== */
+.main-description {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: justify;
+  letter-spacing: 0.05em;
+}
+.section-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* ================================
+   6. Link and List Styling
+=================================== */
+ul {
+  padding-left: 1.1rem;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ================================
+   7. Table Styling (Gallery)
+=================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+th, td {
+  border: 1px solid #b2bec3;
+  padding: 8px;
+  text-align: center;
+}
+.event-gallery caption {
+  font-weight: bold;
+  padding: 0.75rem 0;
+  color: #1565c0;
+}
+.event-gallery td {
+  text-align: center;
+  padding: 0.7rem;
+}
+.event-gallery tr:nth-child(even) {
+  background-color: #ecf0f1;
+}
+.gallery-img {
+  width: 100%;
+  max-width: 180px;
+  height: 120px;
+  border: 3px solid #0099ff;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  object-fit: cover;
+}
+.gallery-img:hover {
+  transform: scale(1.07);
+  border-color: #1565c0;
+}
+
+/* ================================
+   8. Box Model & Layout Control
+=================================== */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid #0099ff;
+}
+.selected {
+  outline: 2px solid #43a047;
+}
+.hidden {
+  visibility: hidden;
+}
+.none {
+  display: none;
+}
+
+/* ================================
+   9. Multiple Columns in Text
+=================================== */
+.news-section {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  margin: 2rem auto;
+  max-width: 900px;
+  background: #f9fbe7;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+/* ================================
+   10. Responsive Web Design (Media Queries)
+=================================== */
+@media (max-width: 992px) {
+  .event-card img,
+  .card-img-top {
+    height: 150px !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) {
+  nav ul.nav-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #welcomeBanner {
+    width: 98%;
+  }
+  form {
+    width: 96%;
+    padding: 1rem;
+  }
+  .gallery-img {
+    width: 90vw;
+    height: auto;
+  }
+  .section-header {
+    font-size: 1rem;
+  }
+  .news-section {
+    column-count: 1;
+    padding: 0.5rem;
+  }
+  table, th, td {
+    font-size: 0.97rem;
+  }
+}
+@media (max-width: 450px) {
+  #mainHeader {
+    font-size: 1.2rem;
+  }
+  .section-header {
+    font-size: 0.9rem;
+  }
+}
+
+/* ================================
+   11. Form Styles and Misc
+=================================== */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin: 0 auto 2rem auto;
+  padding: 1.5rem;
+  background: #f3fafe;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #b2bec3;
+}
+form label {
+  margin: 0.5rem 0 0.2rem 0;
+  font-weight: bold;
+  color: #0d47a1;
+}
+form input, form select, form textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #90caf9;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.cta-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* ================================
+   Footer Styles
+=================================== */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  border-top: none;
+  position: relative;
+}
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+.footer-social a {
+  font-size: 1.5rem;
+  color: #fff !important;
+  margin: 0 0.5rem;
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: #ffd600 !important;
+}

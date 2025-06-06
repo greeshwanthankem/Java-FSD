@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Community Event Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .event-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .fixed-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1040; /* less than Bootstrap modal's z-index (1055), so modal will always be on top */
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    body {
+      padding-bottom: 80px; /* or match the height of your fixed footer */
+    }
+
+    .footer-social a {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">Community Events</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="#register">Register</a></li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search events" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Banner -->
+  <div class="container mb-4">
+    <div class="p-4 mb-3 bg-primary text-white rounded text-center">
+      <h1 class="display-5">Welcome to the Local Community Event Portal</h1>
+      <p class="lead mb-0">Find, join, and celebrate community events near you!</p>
+      <span class="badge bg-warning text-dark fs-6 mt-2">Register now for 50% off! <i class="bi bi-gift"></i></span>
+    </div>
+  </div>
+
+  <!-- Success Alert (hidden by default, shown after registration submit) -->
+  <div class="container">
+    <div id="successAlert" class="alert alert-success d-none" role="alert">
+      Registration successful! Check your email for confirmation.
+    </div>
+  </div>
+
+  <!-- Events Section -->
+  <div class="container mb-4" id="events">
+    <h2 class="mb-4 text-center text-uppercase">Upcoming Events</h2>
+    <div class="row g-4">
+      <!-- Event Card 1 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card event-card shadow">
+          <img src="./assets/event2.jpg" class="card-img-top" alt="Evolution of LLMs Event Poster">
+          <div class="card-body">
+            <h5 class="card-title">EVOLUTION OF LLMs</h5>
+            <p class="card-text">Distinguished Speaker: Dr. Tanmoy Chakraborty, ACM PVPSIT Student Chapter Presents. Don’t miss this session on the evolution and future of large language models!</p>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event"></i> 12th June 2025</small></p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal" data-event="EVOLUTION OF LLMs">Register</button>
+          </div>
+        </div>
+      </div>
+      <!-- Event Card 2 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card event-card shadow">
+          <img src="./assets/event4.png" class="card-img-top" alt="Science and Tech Quiz Poster">
+          <div class="card-body">
+            <h5 class="card-title">SCIENCE AND TECH QUIZ</h5>
+            <p class="card-text">Participate in the Quiz Week 2025: Science and Tech. Compete with the brightest minds, answer exciting questions, and win a prize pool of 3200!</p>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event"></i> 20th June 2025</small></p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal" data-event="SCIENCE AND TECH QUIZ">Register</button>
+          </div>
+        </div>
+      </div>
+      <!-- Event Card 3 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card event-card shadow">
+          <img src="./assets/event6.jpg" class="card-img-top" alt="Paper Presentation Competition Poster">
+          <div class="card-body">
+            <h5 class="card-title">PAPER PRESENTATION COMPETITION</h5>
+            <p class="card-text">SITAR 2K25: Present your ideas on "Current Trending Technologies in Computer Science" and win exciting cash prizes. Participation certificates for all!</p>
+            <p class="card-text"><small class="text-muted"><i class="bi bi-calendar-event"></i> 30th June 2025</small></p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal" data-event="PAPER PRESENTATION COMPETITION">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Registration Form (in a Modal) -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="registrationForm" novalidate>
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">Register for Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" required autofocus>
+              <div class="invalid-feedback">Please enter your full name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <div class="mb-3">
+              <label for="event" class="form-label">Select Event</label>
+              <select class="form-select" id="event" required>
+                <option selected disabled value="">Choose...</option>
+                <option>Music Night</option>
+                <option>Tech Innovators Meetup</option>
+                <option>Sports Carnival</option>
+              </select>
+              <div class="invalid-feedback">Please select an event.</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit Registration</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-4 fixed-footer">
+    <div class="container footer-social">
+      <span>Follow us:
+        <a href="#" class="text-white ms-2" data-bs-toggle="tooltip" title="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white ms-2" data-bs-toggle="tooltip" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="text-white ms-2" data-bs-toggle="tooltip" title="Instagram"><i class="bi bi-instagram"></i></a>
+      </span>
+      <br>
+      <small>&copy; 2025 Local Community Event Portal</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle CDN (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS for form validation, tooltips, and demo success alert -->
+  <script>
+    // Bootstrap tooltip initialization
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    // Automatically fill event name in modal based on clicked button
+    var registerModal = document.getElementById('registerModal');
+    registerModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      var eventName = button ? button.getAttribute('data-event') : "";
+      var select = document.getElementById('event');
+      if (eventName && select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text === eventName) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    });
+
+    // Bootstrap form validation and fake submit handling
+    var form = document.getElementById('registrationForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (form.checkValidity()) {
+        // Show the success alert
+        document.getElementById('successAlert').classList.remove('d-none');
+        // Hide the modal
+        var modal = bootstrap.Modal.getInstance(registerModal);
+        modal.hide();
+        // Optionally, reset form
+        form.reset();
+        form.classList.remove('was-validated');
+        setTimeout(() => {
+          document.getElementById('successAlert').classList.add('d-none');
+        }, 3500);
+      } else {
+        form.classList.add('was-validated');
+      }
+    }, false);
+  </script>
+</body>
+</html>
